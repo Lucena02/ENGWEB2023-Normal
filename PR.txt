@@ -1,0 +1,59 @@
+contendo uma descrição de como fez a persistência de dados, do setup de bases de dados, 
+respostas textuais pedidas, instruções de como executar as aplicações desenvolvidas, etc...
+
+
+Persistência de Dados: 
+    No que toca a persistência de dados utilizei o mongoDB.
+    
+
+
+Setup de Bases de Dados: 
+    Para o setup de bases de dados comecei por utilizar o seguinte comando para importar o ficheiro.json
+    para o mongoDB:
+        mongoimport -d plantas -c plantas --file plantas.json --jsonArray 
+    
+    Para além disso, substitui o atributo "Id" presente no dataset fornecido pelo atributo "_id" de forma
+    ao mongoDB não criar automaticamente esse atributo. Os valores presentes no atributo anteriormente
+    designado de "Id" não foram alterados.
+
+
+
+Respostas Textuais Pedidas: 
+
+
+1- Quantos registos estão na base de dados;
+db.plantas.find({}).count() 
+
+
+2- Quantos registos de plantação se encontram na freguesia "São Domingos de Rana"?
+db.plantas.find({Freguesia: "São Domingos de Rana"}).count()
+
+
+3- Qual a lista de freguesias (ordenada alfabeticamente e sem repetições)?
+db.plantas.distinct("Freguesia").sort()
+
+
+4- Qual a distribuição dos registos por freguesia (quantos registos em cada freguesia)
+db.plantas.aggregate([ { $group: { _id: "$Freguesia", count: { $sum: 1 } } }])
+
+
+5- Qual a distribuição dos registos por espécie?
+db.plantas.aggregate([ { $group: { _id: "$Espécie", count: { $sum: 1 } } }])
+
+
+
+
+Instruções de como executar as aplicações desenvolvidas: 
+
+    na diretoria do ex1: 
+        -instalar o necessário (axios, mongoose, http-errors) através do comando "npm install ..." 
+        em que ... corresponde ao que deseja instalar
+        -executar "npm start"
+
+    na diretoria do ex2 
+        -instalar o necessário (axios, mongoose, http-errors) através do comando "npm install ..." 
+        em que ... corresponde ao que deseja instalar
+        -executar "npm start"
+
+    Abrir "http://localhost:15031/" para testar a interface
+    Abrir o "Postman" para testar a API de dados.

@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 Lista de Plantas 
+  p Espécie: #{data[0].Espécie}
+  p Nome Científico: #{data[0]["Nome Científico"]}
+  p 
+    a(href=`http://localhost:15031/`) Voltar à página inicial
+
+
+  .w3-container
+    table.w3-table-all
+      tr 
+        th id
+        th Freguesia
+        th Espécie
+        th Estado 
+        th Número de Intervenções
+      each ind in data
+        tr
+          td
+            a(href=`http://localhost:15031/${ind._id}`) #{ind._id}
+          td=ind.Freguesia
+          td
+            a(href=`http://localhost:15031/especies/${ind.Espécie}`) #{ind.Espécie}
+          td=ind.Estado
+          td=ind["Número de intervenções"]
+

@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h1 Planta de ID: #{ind._id}
+    p 
+        a(href=`http://localhost:15031/`) Voltar à página inicial
+
+    .w3-container
+        ul.w3-ul
+            li Id: #{ind._id}
+            li Número de Registo: #{ind["Número de Registo"]}
+            li Código de rua: #{ind["Código de rua"]}
+            li Rua: #{ind.Rua}
+            li Local: #{ind.Local}
+            li Freguesia: #{ind.Freguesia}
+            li Espécie: #{ind.Espécie}
+            li Nome Científico: #{ind["Nome Científico"]}
+            li Origem: #{ind.Origem}
+            li Data de Plantação: #{ind["Data de Plantação"]}
+            li Estado: #{ind.Estado}
+            li Caldeira: #{ind.Caldeira}
+            li Tutor: #{ind.Tutor}
+            li Implantação: #{ind.Implantação}
+            li Gestor: #{ind.Gestor}
+            li Data de actualização: #{ind["Data de actualização"]}
+            li Número de intervenções: #{ind["Número de intervenções"]}
+
